@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\file\FileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,7 @@ Route::get('/', function () {
 Route::get('/dashboard/{any?}', function () {
     return view('dashboard');
 })->where('any','.*');
+
+
+// File Upload 
+Route::post('/file-control',[FileController::class,'upload']);

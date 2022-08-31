@@ -58,9 +58,10 @@ export default{
 .dashboard-sidebar{
     border-right: 2px solid #5797F8;
     width: 200px;
+    min-width: 200px !important;
     height: 100vh;
     background-color: rgba(255, 255, 255, 0.959);
-    z-index: 10;
+    z-index: 100;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.37);
     height: 100vh;
     overflow: auto;

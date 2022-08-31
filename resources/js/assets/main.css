@@ -13,9 +13,16 @@ a{
 }
 
 ol,ul{ padding-left: 0}
+table{
+  position: relative;
+}
 thead{
   background-color: #0b5ed7;
   color:white;
+  position: sticky;
+  top:10%;
+  left:10%;
+  z-index: 5;
 }
 .btn-sm{font-size: .82rem; padding:.2rem; margin: 1px ;}
 

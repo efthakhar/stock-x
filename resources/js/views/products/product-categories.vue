@@ -73,13 +73,15 @@ position: relative;
     top:0px;
     background-color: whitesmoke;
     box-shadow: 1px 1px 2px grey;
-    padding: 10px;
+    padding: 4px;
     display: block;
     width: 100% !important;
+    z-index: 5;
 }
 .img_cell{
-    width: 60px;
-    height: 60px;
+    width:80px !important;
+    min-width: 80px;
+    height: 80px;
 }
 .img_cell img{
     width: 100%;

@@ -1,0 +1,13 @@
+
+.sidebar-header a{ text-decoration: none; color:whitesmoke;}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+.sidebar-header{cursor: pointer;}
+
+.sidebar-header:hover{
+cursor: pointer;
+color:white !important;
+}
+
+.active-nav{color:greenyellow !important}
+

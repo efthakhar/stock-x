@@ -1,0 +1,23 @@
+/* for crome */
+::-webkit-scrollbar {
+    width: 5px;
+    }
+    ::-webkit-scrollbar-track {
+    background: #000000;
+    }
+    ::-webkit-scrollbar-thumb {
+    background: #5797F8;
+    border-radius: 10px;
+    }
+    /* for mozilla */
+    .dashboard-sidebar{
+       
+        scrollbar-width: thin;
+        scrollbar-color: #5797F8 black;
+}
+
+/*  Utility classes */
+
+.border-r-10{ border-radius: 100px; }
+
+.pad-10{ padding: 10px;}

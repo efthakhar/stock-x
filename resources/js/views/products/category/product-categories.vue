@@ -12,7 +12,19 @@ export default{
              await fetch(`${this.api_url}/api/product-categories/`)
             .then(response => response.json())
             .then(data => this.categories = data)
-        }
+        },
+        async deleteCategory(id){
+            fetch(`${this.api_url}/api/product-categories/${id}`,{
+                method:  'DELETE',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                
+            })
+            .then(response=> response.json())
+            .then(res=>console.log(res.message))
+            this.getCategories()
+      }
     },
     mounted(){
         this.getCategories()
@@ -34,6 +46,7 @@ export default{
             <table class="table  table-bordered my-2">
             <thead>
                 <tr>
+                    <th scope="col">id</th>
                     <th scope="col"></th>
                     <th scope="col">category name</th>
                     <th scope="col">category slug</th>
@@ -43,15 +56,25 @@ export default{
             </thead>
             <tbody>
                 <tr v-for="category in categories" :key="category.id">
+                    <td scope="col">{{category.id}}</td>
                     <td scope="col" class="img_cell">
                         <img :src="category.category_img_url" alt="">
                     </td>
                     <td scope="col">{{category.category_name}}</td>
                     <td scope="col">{{category.category_slug}}</td>
-                    <td scope="col">{{category.parent_category_id!=null?categories[category.parent_category_id].category_name:''}}</td>
+
+                 
+                    <td scope="col">{{categories[category.parent_category_id]!==undefined?categories[category.parent_category_id].category_name:''}}</td>
+
+                    <!-- <td scope="col">{{category.parent_category_id!==undefined?categories[category.parent_category_id].category_name:''}}</td> -->
                     <td scope="col">
-                        <a class="btn btn-sm btn-primary">edit</a>
-                        <a class="btn btn-sm btn-danger">delete</a>
+                        <router-link :to="{ name: 'edit-product-category', params: { id: category.id} }" 
+                        class="btn btn-sm btn-primary">
+                            edit
+                        </router-link>
+                        <a class="btn btn-sm btn-danger" v-on:click="deleteCategory(category.id)">
+                            delete
+                        </a>
                     </td>
                 </tr>
             </tbody>
@@ -77,11 +100,12 @@ position: relative;
     display: block;
     width: 100% !important;
     z-index: 5;
+    border-radius: 10px;
 }
 .img_cell{
-    width:80px !important;
-    min-width: 80px;
-    height: 80px;
+    width:60px !important;
+    min-width: 60px;
+    height: 60px;
 }
 .img_cell img{
     width: 100%;

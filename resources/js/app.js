@@ -17,4 +17,8 @@ app.use(router)
 // adding some global variable
 app.config.globalProperties.api_url = 'http://127.0.0.1:8000'
 
+
+router.isReady().then( ()=>{
 app.mount('#app')
+})
+

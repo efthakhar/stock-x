@@ -16,12 +16,17 @@ const router = createRouter({
     {
       path: '/dashboard/products/categories',
       name: 'product-categories',
-      component: () =>  import('../views/products/product-categories.vue'),
+      component: () =>  import('../views/products/category/product-categories.vue'),
     },
     {
       path: '/dashboard/products/add-product-category',
       name: 'add-product-category',
-      component: () =>  import('../views/products/add-product-category.vue'),
+      component: () =>  import('../views/products/category/add-product-category.vue'),
+    },
+    {
+      path: '/dashboard/products/edit-product-category/:id',
+      name: 'edit-product-category',
+      component: () =>  import('../views/products/category/edit-product-category.vue'),
     },
 
 

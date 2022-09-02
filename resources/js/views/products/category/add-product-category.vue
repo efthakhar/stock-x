@@ -1,6 +1,13 @@
 <script>
+import { useFileControl } from '../../../sharedFunction/filecontrol.js'
+
 import axios from 'axios';
 export default{
+
+  setup() {
+    const { uploadFile } = useFileControl()
+    return {uploadFile}
+  },
 
 
     data(){
@@ -39,38 +46,25 @@ export default{
 
           this.$router.push({ name: 'product-categories'})  
       },
-
-     async uploadFile(e){
-        this.category_img = e.target.files[0];
-        let formData = new FormData(); 
-        formData.append("file", e.target.files[0]);
-
-        const config = { headers: 
-                          {
-                              'content-type': 'multipart/form-data',
-                              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                          }
-                         }
-
-          axios.post('/file-control', formData, config)
-          .then(response=>{
-            this.category_img_url = response.data.file_name
-            console.log(response.data.file_name)
-          })
-        
-
+      async imageUpload(e){
+          let url = await this.uploadFile(e)
+          this.category_img_url =  url
       }
+
+
     },
     mounted(){
       this.getCategories()
     }
+
+
 }  
 </script>
 
 <template>
 <div class="row">
 <div class="fullpage">
-    
+  
     <div class="page-content">
         <div class="col-md-4 p-2">
             <h6 class="m-2 mb-3">ADD NEW PRODUCT CATEGORY</h6>
@@ -90,9 +84,13 @@ export default{
                 </option>
               </select>
 
+   
               <label class="mt-2 mb-1" >Category Image</label>
-              <div><img :src="category_img_url" alt="" class="cat_img" v-if="category_img_url"></div>  
-              <input type="file" class="form-control" v-on:change="uploadFile">
+              <div>
+                <img :src="category_img_url" alt="" class="cat_img" v-if="category_img_url">
+                <input type="file" class="form-control" v-on:change="imageUpload">
+              </div>
+              
 
               <a  class="btn btn-primary my-3" v-on:click="addCategory">
                 SUBMIT

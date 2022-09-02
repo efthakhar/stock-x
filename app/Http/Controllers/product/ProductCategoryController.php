@@ -24,10 +24,45 @@ class ProductCategoryController extends Controller
                     ->find($id); 
        
          return response()->json($category);       
-   }
+    }
+
+    // get all child category of a specific category id
+    public function getchilds($id){
+
+        $final = [];
+
+        $categories =
+         DB::table('product_categories')
+        ->where('parent_category_id',$id)
+        ->get()
+        ->toArray();
+
+        foreach($categories as $child){
+              
+           array_push($final,$child->id);
+
+           $childcats = $this->getchilds($child->id);
+
+           foreach($childcats as $child)
+           { 
+              array_push($final,$child);
+           }
+          
+        }
+        
+        return $final;
+        
+
+    }
+
+    function getAllChildCats($id){
+       $all_child_cat = $this->getchilds($id);
+       return json_encode($all_child_cat);
+    }
+
+
 
     function store(Request $request){
-
 
         $Category = DB::table('product_categories')->insert([
             'category_name' => $request->category_name,

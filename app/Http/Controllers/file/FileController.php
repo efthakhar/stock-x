@@ -18,6 +18,8 @@ class FileController extends Controller
         return response()->json(['file_name' => url('/')."/"."upload"."/".$generated_new_name ]);
     }
 
+    
+
 
     
 }

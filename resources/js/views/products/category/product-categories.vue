@@ -14,17 +14,20 @@ export default{
             .then(data => this.categories = data)
         },
         async deleteCategory(id){
+
             fetch(`${this.api_url}/api/product-categories/${id}`,{
                 method:  'DELETE',
                 headers: {
                 'Content-Type': 'application/json'
-                },
-                
+                },              
             })
             .then(response=> response.json())
             .then(res=>console.log(res.message))
             this.getCategories()
-      }
+
+      },
+
+     
     },
     mounted(){
         this.getCategories()
@@ -47,7 +50,7 @@ export default{
             <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col"></th>
+                    <th scope="col">logo</th>
                     <th scope="col">category name</th>
                     <th scope="col">category slug</th>
                     <th scope="col">parent category</th>
@@ -66,7 +69,6 @@ export default{
                  
                     <td scope="col">{{categories[category.parent_category_id]!==undefined?categories[category.parent_category_id].category_name:''}}</td>
 
-                    <!-- <td scope="col">{{category.parent_category_id!==undefined?categories[category.parent_category_id].category_name:''}}</td> -->
                     <td scope="col">
                         <router-link :to="{ name: 'edit-product-category', params: { id: category.id} }" 
                         class="btn btn-sm btn-primary">
@@ -76,6 +78,7 @@ export default{
                             delete
                         </a>
                     </td>
+
                 </tr>
             </tbody>
         </table>

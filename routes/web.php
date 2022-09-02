@@ -25,3 +25,4 @@ Route::get('/dashboard/{any?}', function () {
 
 // File Upload 
 Route::post('/file-control',[FileController::class,'upload']);
+Route::delete('/file-control',[FileController::class,'delete']);

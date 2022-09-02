@@ -10,7 +10,8 @@ export default{
             category_slug : '',
             parent_category_id: '',
             category_img_url:'',
-            category_img:''
+            category_img:'',
+            child_cats:[]
         }
     },
     methods:{
@@ -31,6 +32,18 @@ export default{
               .then(data => this.categories = data)
       },
 
+      async getChildCat(){
+              await fetch(`${this.api_url}/api/product-categories/childcats/${this.$route.params.id}`)
+              .then(response => response.json())
+              .then(data => {
+                this.child_cats= data
+              })
+              console.log(this.child_cats)
+      },
+
+
+
+
       async editCategory(){
           let data = { 
               category_name : this.category_name,
@@ -48,7 +61,7 @@ export default{
           }).then(response=>response.json())
             .then(data => console.log(data))
 
-          this.$router.push({ name: 'product-categories'})  
+            this.$router.push({ name: 'product-categories'})  
       },
 
      async uploadFile(e){
@@ -76,6 +89,7 @@ export default{
     mounted(){
       this.getCategories()
       this.getCategory()
+      this.getChildCat()
     }
 }  
 </script>
@@ -97,7 +111,11 @@ export default{
 
               <label class="mt-2 mb-1">Parent Category</label>  
               <select class="form-control" v-model="parent_category_id">
-                <option v-for="category in categories" :key="category.id" :value="category.id" >
+                <option value="">none</option>
+                <option v-for="category in categories" 
+                  :key="category.id" :value="category.id"
+                  :class="child_cats.includes(category.id)||category.id==this.$route.params.id?'hide_cat':''"
+                >
                   {{category.category_name}}
                 </option>
               </select>
@@ -127,5 +145,6 @@ export default{
   object-fit: cover;
   margin:10px;
 }
+.hide_cat{ display: none;}
 </style>
 

@@ -10,7 +10,8 @@ export default{
             category_slug : '',
             parent_category_id: '',
             category_img_url:'',
-            category_img:''
+            category_img:'',
+           
         }
     },
     methods:{
@@ -83,6 +84,7 @@ export default{
 
               <label class="mt-2 mb-1">Parent Category</label>  
               <select class="form-control" v-model="parent_category_id">
+                <option value="">none</option>
                 <option v-for="category in categories" :key="category.id" :value="category.id" >
                   {{category.category_name}}
                 </option>

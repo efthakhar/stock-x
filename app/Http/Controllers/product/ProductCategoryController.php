@@ -66,7 +66,7 @@ class ProductCategoryController extends Controller
 
         $Category = DB::table('product_categories')->insert([
             'category_name' => $request->category_name,
-            'category_slug' => $request->category_slug,
+            'category_slug' =>  str_replace(" ","-",$request->category_slug),
             'parent_category_id' => $request->parent_category_id,
             'category_img_url' => $request->category_img_url
         ]);
@@ -84,7 +84,7 @@ class ProductCategoryController extends Controller
                ->where('id', $id)
                ->update([
                 'category_name' => $request->category_name,
-                'category_slug' => $request->category_slug,
+                'category_slug' =>  str_replace(" ","-",$request->category_slug),
                 'parent_category_id' => $request->parent_category_id,
                 'category_img_url' => $request->category_img_url
              ]);

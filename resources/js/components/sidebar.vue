@@ -22,6 +22,11 @@ export default{
 
                 },
 
+
+
+
+
+
                 // {   
                 //     navlinktext:'home',
                 //     navlink:'/dashboard/home'
@@ -87,7 +92,7 @@ export default{
 
     display:flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 5px 0px 5px 15px;
 }
 
 .side-nav-sublink{

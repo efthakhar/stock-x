@@ -87,7 +87,7 @@ export default{
    
               <label class="mt-2 mb-1" >Category Image</label>
               <div>
-                <img :src="category_img_url" alt="" class="cat_img" v-if="category_img_url">
+                <img :src="category_img_url" alt="" class="table_img" v-if="category_img_url">
                 <input type="file" class="form-control" v-on:change="imageUpload">
               </div>
               
@@ -107,7 +107,7 @@ export default{
 
 <style>
 
-.cat_img{
+.table_img{
   width: 100px;
   height: 100px;
   object-fit: cover;

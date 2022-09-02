@@ -105,14 +105,6 @@ position: relative;
     z-index: 5;
     border-radius: 10px;
 }
-.img_cell{
-    width:60px !important;
-    min-width: 60px;
-    height: 60px;
-}
-.img_cell img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+
+
 </style>

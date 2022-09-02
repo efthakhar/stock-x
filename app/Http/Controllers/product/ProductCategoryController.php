@@ -52,7 +52,6 @@ class ProductCategoryController extends Controller
         
         return $final;
         
-
     }
 
     function getAllChildCats($id){

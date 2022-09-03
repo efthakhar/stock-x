@@ -3,7 +3,8 @@
 use App\Http\Controllers\product\ProductBrandController;
 use App\Http\Controllers\product\ProductCategoryController;
 use App\Http\Controllers\product\ProductUnitController;
-use App\Http\Controllers\settings\WarehouseController;
+use App\Http\Controllers\setting\CurrencyController;
+use App\Http\Controllers\setting\WarehouseController;
 
 
 use Illuminate\Http\Request;
@@ -27,13 +28,23 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 
-
 // Warehouse
 Route::get('/warehouses',[WarehouseController::class,'index']);
 Route::get('/warehouses/{id}',[WarehouseController::class,'show']);
 Route::post('/warehouses',[WarehouseController::class,'store']);
 Route::put('/warehouses/{id}',[WarehouseController::class,'update']);
 Route::delete('/warehouses/{id}',[WarehouseController::class,'delete']);
+
+// Currency
+Route::get('/currencies',[CurrencyController::class,'index']);
+Route::get('/currencies/{id}',[CurrencyController::class,'show']);
+Route::post('/currencies',[CurrencyController::class,'store']);
+Route::put('/currencies/{id}',[CurrencyController::class,'update']);
+Route::delete('/currencies/{id}',[CurrencyController::class,'delete']);
+
+
+
+
 
 
 // Product category

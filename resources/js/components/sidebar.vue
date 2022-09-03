@@ -25,7 +25,9 @@ export default{
                     navlinktext:'settings',
                     navlink:'',
                     subnavlinks:[
-                        { subnavtext:'warehouse', subnavlink:'/dashboard/warehouses'},      
+                        { subnavtext:'warehouse', subnavlink:'/dashboard/warehouses'},
+                        { subnavtext:'currency', subnavlink:'/dashboard/currencies'},      
+                        { subnavtext:'tax', subnavlink:'/dashboard/taxes'},      
                     ]
 
                 },

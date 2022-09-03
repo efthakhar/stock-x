@@ -68,18 +68,36 @@ const router = createRouter({
     {
       path: '/dashboard/warehouses',
       name: 'warehouses',
-      component: () =>  import('../views/settings/warehouses.vue'),
+      component: () =>  import('../views/settings/warehouses/warehouses.vue'),
     },
     {
       path: '/dashboard/add-warehouse',
       name: 'add-warehouse',
-      component: () =>  import('../views/settings/add-warehouse.vue'),
+      component: () =>  import('../views/settings/warehouses/add-warehouse.vue'),
     },
     {
       path: '/dashboard/edit-warehouse/:id',
       name: 'edit-warehouse',
-      component: () =>  import('../views/settings/edit-warehouse.vue'),
+      component: () =>  import('../views/settings/warehouses/edit-warehouse.vue'),
     },
+
+    // Currency
+    {
+      path: '/dashboard/currencies',
+      name: 'currencies',
+      component: () =>  import('../views/settings/currencies/currencies.vue'),
+    },
+    {
+      path: '/dashboard/add-currency',
+      name: 'add-currency',
+      component: () =>  import('../views/settings/currencies/add-currency.vue'),
+    },
+    {
+      path: '/dashboard/edit-currency/:id',
+      name: 'edit-currency',
+      component: () =>  import('../views/settings/currencies/edit-currency.vue'),
+    },
+
 
 
 

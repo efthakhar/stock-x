@@ -46,6 +46,24 @@ const router = createRouter({
       component: () =>  import('../views/products/brand/edit-product-brand.vue'),
     },
 
+    // Product Units
+    {
+      path: '/dashboard/products/units',
+      name: 'product-units',
+      component: () =>  import('../views/products/unit/product-units.vue'),
+    },
+    {
+      path: '/dashboard/products/add-unit',
+      name: 'add-product-unit',
+      component: () =>  import('../views/products/unit/add-product-unit.vue'),
+    },
+    {
+      path: '/dashboard/products/edit-unit/:id',
+      name: 'edit-product-unit',
+      component: () =>  import('../views/products/unit/edit-product-unit.vue'),
+    },
+
+
 
 
 

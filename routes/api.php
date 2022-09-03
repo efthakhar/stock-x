@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\product\ProductBrandController;
 use App\Http\Controllers\product\ProductCategoryController;
+use App\Http\Controllers\product\ProductUnitController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,11 @@ Route::get('/product-brands/{id}',[ProductBrandController::class,'show']);
 Route::post('/product-brands',[ProductBrandController::class,'store']);
 Route::put('/product-brands/{id}',[ProductBrandController::class,'update']);
 Route::delete('/product-brands/{id}',[ProductBrandController::class,'delete']);
+
+// Product Units
+Route::get('/product-units',[ProductUnitController::class,'index']);
+Route::get('/product-units/{id}',[ProductUnitController::class,'show']);
+Route::post('/product-units',[ProductUnitController::class,'store']);
+Route::put('/product-units/{id}',[ProductUnitController::class,'update']);
+Route::delete('/product-units/{id}',[ProductUnitController::class,'delete']);
+

@@ -17,6 +17,7 @@ export default{
                         { subnavtext:'product list', subnavlink:'/dashboard/products'},
                         { subnavtext:'categories', subnavlink:'/dashboard/products/categories'},
                         { subnavtext:'brands', subnavlink:'/dashboard/products/brands'},
+                        { subnavtext:'units', subnavlink:'/dashboard/products/units'},
                         
                     ]
 
@@ -89,15 +90,18 @@ export default{
 }
 
 .side-nav-sublinks{
-
+    
     display:flex;
     flex-direction: column;
-    padding: 5px 0px 5px 15px;
+    padding: 0px 0px 0px 0px;
+    padding: 13px;
 }
 
 .side-nav-sublink{
  background-color: whitesmoke;
  color: grey;
+ border-top:1.2px solid #2d7bf0;
+ /* border-left:6px solid #0B5ED7; */
  
 }
 

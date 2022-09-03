@@ -3,6 +3,9 @@
 use App\Http\Controllers\product\ProductBrandController;
 use App\Http\Controllers\product\ProductCategoryController;
 use App\Http\Controllers\product\ProductUnitController;
+use App\Http\Controllers\settings\WarehouseController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +23,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+
+// Warehouse
+Route::get('/warehouses',[WarehouseController::class,'index']);
+Route::get('/warehouses/{id}',[WarehouseController::class,'show']);
+Route::post('/warehouses',[WarehouseController::class,'store']);
+Route::put('/warehouses/{id}',[WarehouseController::class,'update']);
+Route::delete('/warehouses/{id}',[WarehouseController::class,'delete']);
+
 
 // Product category
 Route::get('/product-categories',[ProductCategoryController::class,'index']);
@@ -42,4 +57,6 @@ Route::get('/product-units/{id}',[ProductUnitController::class,'show']);
 Route::post('/product-units',[ProductUnitController::class,'store']);
 Route::put('/product-units/{id}',[ProductUnitController::class,'update']);
 Route::delete('/product-units/{id}',[ProductUnitController::class,'delete']);
+
+
 

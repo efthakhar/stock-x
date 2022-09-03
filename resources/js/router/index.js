@@ -64,6 +64,24 @@ const router = createRouter({
     },
 
 
+    // Warehouses
+    {
+      path: '/dashboard/warehouses',
+      name: 'warehouses',
+      component: () =>  import('../views/settings/warehouses.vue'),
+    },
+    {
+      path: '/dashboard/add-warehouse',
+      name: 'add-warehouse',
+      component: () =>  import('../views/settings/add-warehouse.vue'),
+    },
+    {
+      path: '/dashboard/edit-warehouse/:id',
+      name: 'edit-warehouse',
+      component: () =>  import('../views/settings/edit-warehouse.vue'),
+    },
+
+
 
 
 

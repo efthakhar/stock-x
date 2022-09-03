@@ -17,8 +17,15 @@ export default{
                         { subnavtext:'product list', subnavlink:'/dashboard/products'},
                         { subnavtext:'categories', subnavlink:'/dashboard/products/categories'},
                         { subnavtext:'brands', subnavlink:'/dashboard/products/brands'},
-                        { subnavtext:'units', subnavlink:'/dashboard/products/units'},
-                        
+                        { subnavtext:'units', subnavlink:'/dashboard/products/units'},            
+                    ]
+
+                },
+                {   
+                    navlinktext:'settings',
+                    navlink:'',
+                    subnavlinks:[
+                        { subnavtext:'warehouse', subnavlink:'/dashboard/warehouses'},      
                     ]
 
                 },

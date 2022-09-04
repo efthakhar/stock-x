@@ -104,6 +104,9 @@ export default{
         async imageUpload(e){
             let url = await this.uploadFile(e)
             this.product_img_url =  url
+        },
+        generate_procuct_code(){
+            this.product_code = Date.now()+Math.floor(Math.random(1,67))
         }
 
     },
@@ -139,7 +142,9 @@ export default{
                     </div>
                     <div class="col-md-4">
                         <label class="mt-2 mb-1">product code **</label>  
+                        <a v-on:click="generate_procuct_code" class="m-2 btn btn-primary btn-sm">generate code</a>
                         <input type="text"  class="form-control" v-model="product_code">
+                        
                     </div>
                 </div>
 

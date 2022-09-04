@@ -115,6 +115,18 @@ const router = createRouter({
       component: () =>  import('../views/settings/taxes/edit-tax.vue'),
     },
 
+    // Product
+    {
+      path: '/dashboard/products',
+      name: 'products',
+      component: () =>  import('../views/products/products/products.vue'),
+    },
+    {
+      path: '/dashboard/add-product',
+      name: 'add-product',
+      component: () =>  import('../views/products/products/add-product.vue'),
+    },
+
 
 
 

@@ -38,3 +38,5 @@
     height: 160px;
     object-fit: cover;
 }
+
+label{ user-select: none; cursor: pointer;}

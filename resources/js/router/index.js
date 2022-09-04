@@ -98,6 +98,24 @@ const router = createRouter({
       component: () =>  import('../views/settings/currencies/edit-currency.vue'),
     },
 
+    // Tax
+    {
+      path: '/dashboard/taxes',
+      name: 'taxes',
+      component: () =>  import('../views/settings/taxes/taxes.vue'),
+    },
+    {
+      path: '/dashboard/add-tax',
+      name: 'add-tax',
+      component: () =>  import('../views/settings/taxes/add-tax.vue'),
+    },
+    {
+      path: '/dashboard/edit-tax/:id',
+      name: 'edit-tax',
+      component: () =>  import('../views/settings/taxes/edit-tax.vue'),
+    },
+
+
 
 
 

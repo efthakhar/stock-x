@@ -4,6 +4,7 @@ use App\Http\Controllers\product\ProductBrandController;
 use App\Http\Controllers\product\ProductCategoryController;
 use App\Http\Controllers\product\ProductUnitController;
 use App\Http\Controllers\setting\CurrencyController;
+use App\Http\Controllers\setting\TaxController;
 use App\Http\Controllers\setting\WarehouseController;
 
 
@@ -41,6 +42,14 @@ Route::get('/currencies/{id}',[CurrencyController::class,'show']);
 Route::post('/currencies',[CurrencyController::class,'store']);
 Route::put('/currencies/{id}',[CurrencyController::class,'update']);
 Route::delete('/currencies/{id}',[CurrencyController::class,'delete']);
+
+// Tax
+Route::get('/taxes',[TaxController::class,'index']);
+Route::get('/taxes/{id}',[TaxController::class,'show']);
+Route::post('/taxes',[TaxController::class,'store']);
+Route::put('/taxes/{id}',[TaxController::class,'update']);
+Route::delete('/taxes/{id}',[TaxController::class,'delete']);
+
 
 
 

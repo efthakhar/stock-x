@@ -3,21 +3,21 @@ export default{
 
     data(){
         return{
-            currencies:[]
+            taxes:[]
         }
     },
     methods:{
-        async getCurrencies(){
+        async getTaxes(){
 
-            await  fetch(`${this.api_url}/api/currencies`)
+            await  fetch(`${this.api_url}/api/taxes`)
             .then(response=>response.json())
-            .then(data => this.currencies = data)
+            .then(data => this.taxes = data)
 
         },
 
-        async deleteCurrency(id){
+        async deleteTax(id){
 
-            await  fetch(`${this.api_url}/api/currencies/${id}`,{
+            await  fetch(`${this.api_url}/api/taxes/${id}`,{
                 method:  'DELETE',
                 headers: {
                 'Content-Type': 'application/json'
@@ -25,12 +25,12 @@ export default{
             })
             .then(response=>response.json())
             .then(data => console.log(data))
-            this.getCurrencies()
+            this.getTaxes()
 
         }
     },
     mounted(){
-        this.getCurrencies()
+        this.getTaxes()
     }
 
 }   
@@ -40,8 +40,8 @@ export default{
     <div class="row">
 <div class="fullpage">
     <div class="page-nav-section">
-        <router-link :to="{ name: 'add-currency' }" class="btn btn-primary">
-            Add currency
+        <router-link :to="{ name: 'add-tax' }" class="btn btn-primary">
+            Add tax
         </router-link>
     </div>
     <div class="page-content">
@@ -51,25 +51,25 @@ export default{
             <thead>
                 <tr>
                     <th scope="col">id</th>
-                    <th scope="col">currency name</th>
-                    <th scope="col">currency code</th>
-                    <th scope="col">currency symbol</th>
+                    <th scope="col">tax name</th>
+                    <th scope="col">tax code</th>
+                    <th scope="col">tax rate</th>
                     <th scope="col">action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="currency in currencies" :key="currency.id">
-                    <td scope="col">{{currency.id}}</td>
-                    <td scope="col">{{currency.currency_name}}</td>
-                    <td scope="col">{{currency.currency_code}}</td>
-                    <td scope="col">{{currency.currency_symbol}}</td>
+                <tr v-for="tax in taxes" :key="tax.id">
+                    <td scope="col">{{tax.id}}</td>
+                    <td scope="col">{{tax.tax_name}}</td>
+                    <td scope="col">{{tax.tax_code}}</td>
+                    <td scope="col">{{tax.tax_rate}} %</td>
                     <td scope="col">
-                        <router-link :to="{ name: 'edit-currency', params: { id: currency.id} }" 
+                        <router-link :to="{ name: 'edit-tax', params: { id: tax.id} }" 
                         class="btn btn-sm btn-primary" >
                             edit
                         </router-link> 
 
-                        <a class="btn btn-sm btn-danger" v-on:click="deleteCurrency(currency.id)">
+                        <a class="btn btn-sm btn-danger" v-on:click="deleteTax(tax.id)">
                             delete
                         </a>
                     </td>

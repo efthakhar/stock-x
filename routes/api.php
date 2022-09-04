@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\product\ProductBrandController;
 use App\Http\Controllers\product\ProductCategoryController;
+use App\Http\Controllers\product\ProductController;
 use App\Http\Controllers\product\ProductUnitController;
 use App\Http\Controllers\setting\CurrencyController;
 use App\Http\Controllers\setting\TaxController;
@@ -52,8 +53,8 @@ Route::delete('/taxes/{id}',[TaxController::class,'delete']);
 
 
 
-
-
+////////////////////////////////////////////
+////////////////////////////////////////////
 
 
 // Product category
@@ -77,6 +78,14 @@ Route::get('/product-units/{id}',[ProductUnitController::class,'show']);
 Route::post('/product-units',[ProductUnitController::class,'store']);
 Route::put('/product-units/{id}',[ProductUnitController::class,'update']);
 Route::delete('/product-units/{id}',[ProductUnitController::class,'delete']);
+
+
+// Product 
+Route::get('/products',[ProductController::class,'index']);
+Route::get('/products/{id}',[ProductController::class,'show']);
+Route::post('/products',[ProductController::class,'store']);
+Route::put('/products/{id}',[ProductController::class,'update']);
+Route::delete('/products/{id}',[ProductController::class,'delete']);
 
 
 

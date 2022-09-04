@@ -16,6 +16,8 @@ export default{
             categories:[],
             brands:[],
             units:[],
+
+            product_id: this.$route.params.id,
             
             product_code    : '',
             product_name    : '',
@@ -41,6 +43,32 @@ export default{
     },
 
     methods:{
+        async getProduct(id){
+             await fetch(`${this.api_url}/api/products/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                    this.product_code = data.product_code   
+                    this.product_name = data.product_name
+                    this.product_slug = data.product_slug
+
+                    this.unit_id       =  data.unit_id 
+                    this.category_id   =  data.category_id
+                    this.brand_id      =  data.brand_id
+
+                    this.tax_id   =  data.tax_id 
+                    this.tax_inclusive = data.tax_inclusive
+
+                   this.product_cost   = data.product_cost
+                   this.product_price  = data.product_price 
+
+                   this.daily_sale_target = data.daily_sale_target
+                   this.alert_quantity = data.alert_quantity   
+
+                   this.product_img_url  = data.product_img_url    
+                   this.product_description =  data.product_description 
+                }  
+            )
+        },
         
         async addProduct(){
                 let data = { 
@@ -65,8 +93,8 @@ export default{
                     product_description : this.product_description,
                 }  
                 
-                await  fetch(`${this.api_url}/api/products`,{
-                    method:  'POST',
+                await  fetch(`${this.api_url}/api/products/${this.product_id}`,{
+                    method:  'PUT',
                     headers: {
                     'Content-Type': 'application/json'
                     },
@@ -76,6 +104,7 @@ export default{
 
                 this.$router.push({ name: 'products'})  
         },
+
         async getCategories(){
              await fetch(`${this.api_url}/api/product-categories/`)
             .then(response => response.json())
@@ -113,6 +142,7 @@ export default{
         this.getBrands()
         this.getTaxes()
         this.getUnits()
+        this.getProduct(this.product_id)
     }
     
 
@@ -125,7 +155,7 @@ export default{
     
     <div class="page-content">
         <div class=" p-2">
-            <h6 class="m-2 mb-3">ADD NEW PRODUCT </h6>
+            <h6 class="m-2 mb-3">EDIT PRODUCT </h6>
             <form  class="m-2" enctype="multipart/form-data">
 
                 <div class="row mb-3">
@@ -200,8 +230,9 @@ export default{
                             :value="tax.id" >{{tax.tax_code}}</option>
                         </select>
                         <div class="my-3 form-check">
+                            <!-- {{this.tax_inclusive}} -->
                         <input class="form-check-input" type="checkbox" 
-                         :checked="tax_inclusive" v-on:change="!tax_inclusive" id="flexCheckDefault">
+                         :checked="tax_inclusive" v-on:change="tax_inclusive=!tax_inclusive" id="flexCheckDefault">
                         <label class=" form-check-label" for="flexCheckDefault">Tax Inclusive</label>             
                         </div>              
                     </div>             

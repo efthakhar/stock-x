@@ -15,22 +15,22 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('product_code')->nullable();
+            $table->string('product_code')->unique();
             $table->string('product_name')->unique(); 
-            $table->string('product_slug')->nullable(); 
+            $table->string('product_slug')->unique(); 
 
             $table->integer('unit_id'); 
-            $table->integer('category_id')->nullable(); 
+            $table->integer('category_id'); 
             $table->integer('brand_id')->nullable(); 
 
             $table->double('product_cost'); 
             $table->double('product_price'); 
 
-            $table->integer('tax_id'); 
-            $table->boolean('tax_inclusive'); 
+            $table->integer('tax_id')->nullable(); 
+            $table->boolean('tax_inclusive')->nullable(); 
 
-            $table->double('daily_sale_target'); 
-            $table->double('alert_quantity'); 
+            $table->double('daily_sale_target')->nullable(); 
+            $table->double('alert_quantity')->nullable(); 
 
             $table->string('product_img_url')->nullable();
             $table->text('product_description')->nullable(); 

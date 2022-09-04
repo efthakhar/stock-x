@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
+
     function index(){
 
         $products = DB::table('products')->get()->toArray(); 
@@ -18,6 +19,21 @@ class ProductController extends Controller
             $arranged_products[$product->id] = $product;
         }          
         return response()->json($arranged_products);
+    }
+
+    function getProductByName($name){
+
+        $products = DB::table('products')
+                        ->where('product_name', 'like', '%'.$name.'%')
+                        ->get()->toArray(); 
+
+        return response()->json($products);               
+
+        // $arranged_products = [];
+        // foreach($products as $product) {
+        //     $arranged_products[$product->id] = $product;
+        // }          
+        // return response()->json($arranged_products);
     }
 
     public function show($id)

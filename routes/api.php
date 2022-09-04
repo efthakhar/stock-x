@@ -5,6 +5,7 @@ use App\Http\Controllers\product\ProductCategoryController;
 use App\Http\Controllers\product\ProductController;
 use App\Http\Controllers\product\ProductStockController;
 use App\Http\Controllers\product\ProductUnitController;
+use App\Http\Controllers\product\StockAdjustmentController;
 use App\Http\Controllers\setting\CurrencyController;
 use App\Http\Controllers\setting\TaxController;
 use App\Http\Controllers\setting\WarehouseController;
@@ -83,6 +84,7 @@ Route::delete('/product-units/{id}',[ProductUnitController::class,'delete']);
 
 // Product 
 Route::get('/products',[ProductController::class,'index']);
+Route::get('/products/search/{name}',[ProductController::class,'getProductByName']);
 Route::get('/products/{id}',[ProductController::class,'show']);
 Route::post('/products',[ProductController::class,'store']);
 Route::put('/products/{id}',[ProductController::class,'update']);
@@ -95,6 +97,14 @@ Route::get('/product-stocks/{id}',[ProductStockController::class,'show']);
 Route::post('/product-stocks',[ProductStockController::class,'store']);
 Route::put('/product-stocks/{id}',[ProductStockController::class,'update']);
 Route::delete('/product-stocks/{id}',[ProductStockController::class,'delete']);
+
+
+// Stock Adjustment
+Route::get('/stock-adjustments',[StockAdjustmentController::class,'index']);
+Route::get('/stock-adjustments/{id}',[StockAdjustmentController::class,'show']);
+Route::post('/stock-adjustments',[StockAdjustmentController::class,'store']);
+Route::put('/stock-adjustments',[StockAdjustmentController::class,'update']);
+Route::delete('/stock-adjustments',[StockAdjustmentController::class,'delete']);
 
 
 

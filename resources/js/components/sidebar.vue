@@ -17,7 +17,8 @@ export default{
                         { subnavtext:'product list', subnavlink:'/dashboard/products'},
                         { subnavtext:'categories', subnavlink:'/dashboard/products/categories'},
                         { subnavtext:'brands', subnavlink:'/dashboard/products/brands'},
-                        { subnavtext:'units', subnavlink:'/dashboard/products/units'},            
+                        { subnavtext:'units', subnavlink:'/dashboard/products/units'}, 
+                        { subnavtext:'adjustments', subnavlink:'/dashboard/products/adjustments'},            
                     ]
 
                 },

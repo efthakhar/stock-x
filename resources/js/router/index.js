@@ -132,6 +132,19 @@ const router = createRouter({
       component: () =>  import('../views/products/products/edit-product.vue'),
     },
 
+    // Stock Adjustment
+    {
+      path: '/dashboard/products/adjustments',
+      name: 'adjustments',
+      component: () =>  import('../views/products/adjustments/adjustments.vue'),
+    },
+    {
+      path: '/dashboard/products/add-adjustment',
+      name: 'add-adjustment',
+      component: () =>  import('../views/products/adjustments/add-adjustment.vue'),
+    },
+
+
 
 
 

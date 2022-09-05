@@ -103,7 +103,7 @@ Route::delete('/product-stocks/{id}',[ProductStockController::class,'delete']);
 Route::get('/stock-adjustments',[StockAdjustmentController::class,'index']);
 Route::get('/stock-adjustments/{id}',[StockAdjustmentController::class,'show']);
 Route::post('/stock-adjustments',[StockAdjustmentController::class,'store']);
-Route::put('/stock-adjustments',[StockAdjustmentController::class,'update']);
+Route::put('/stock-adjustments/{id}',[StockAdjustmentController::class,'update']);
 Route::delete('/stock-adjustments',[StockAdjustmentController::class,'delete']);
 
 

@@ -143,6 +143,11 @@ const router = createRouter({
       name: 'add-adjustment',
       component: () =>  import('../views/products/adjustments/add-adjustment.vue'),
     },
+    {
+      path: '/dashboard/products/edit-adjustment/:id',
+      name: 'edit-adjustment',
+      component: () =>  import('../views/products/adjustments/edit-adjustment.vue'),
+    },
 
 
 

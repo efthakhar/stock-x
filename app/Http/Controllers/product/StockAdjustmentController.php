@@ -15,7 +15,7 @@ class StockAdjustmentController extends Controller
         $arranged_adjustments = [];
 
         foreach($adjustments as $adjustment) {
-            $arranged_adjustments[$adjustment->product_id] = $adjustment;
+            $arranged_adjustments[$adjustment->id] = $adjustment;
         }          
         return response()->json($arranged_adjustments);
 
@@ -79,21 +79,21 @@ class StockAdjustmentController extends Controller
                     
     }
 
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
 
             $updated1 = DB::table('stock_adjustments')
-            ->where('product_id',   $request->product_id)
-            ->where('warehouse_id', $request->warehouse_id)
+            ->where('id',$id)
             ->update([
 
                 'warehouse_id' => $request->warehouse_id,
                 'product_id' => $request->product_id,
                 'product_name' => $request->product_name,
                 'quantity' => $request->quantity,
+                 
                 'is_addition' => $request->is_addition,
                 'note' => $request->note,
-                'date' => $request->time(),
+                'date' => date("Y-m-d h:i:s", time() ),
             ]);
 
             $updated2 = DB::table('product_stocks')
@@ -101,9 +101,9 @@ class StockAdjustmentController extends Controller
             ->where('warehouse_id', $request->warehouse_id)
             ->update([
 
-            'product_id' => $request->product_id,
-            'product_stock' => $request->product_stock,
-            'warehouse_id' => $request->warehouse_id
+                'product_id'    => $request->product_id,
+                'product_stock' => $request->product_stock,
+                'warehouse_id'  => $request->warehouse_id
             
             ]);
  
@@ -118,10 +118,12 @@ class StockAdjustmentController extends Controller
     public function delete(Request $request)
     {
            
+               //return $request;
                $current_stock = DB::table('product_stocks')
                                     ->where('product_id',   $request->product_id)
                                     ->where('warehouse_id', $request->warehouse_id)
                                     ->first();
+             
 
                $updated_stock = $request->is_addition == true? 
                                 $current_stock->product_stock - $request->quantity :
@@ -138,8 +140,7 @@ class StockAdjustmentController extends Controller
                                 ]);
 
                 $deleted = DB::table('stock_adjustments')
-                                ->where('product_id', '=', $request->product_id)
-                                ->where('warehouse_id', '=', $request->warehouse_id)
+                                ->where('id', '=', $request->id)
                                 ->delete();
                 
 

@@ -15,7 +15,7 @@ app.use(createPinia())
 app.use(router)
 
 // adding some global variable
-app.config.globalProperties.api_url = 'http://127.0.0.1:8000'
+app.config.globalProperties.api_url = window.location.origin
 
 
 router.isReady().then( ()=>{

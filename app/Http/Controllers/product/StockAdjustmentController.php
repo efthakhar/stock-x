@@ -33,6 +33,8 @@ class StockAdjustmentController extends Controller
 
     public function store(Request $request){
 
+        //return $request;
+
         $stock_adjustment = DB::table('stock_adjustments')->insert([
 
             'warehouse_id' => $request->warehouse_id,
@@ -41,19 +43,38 @@ class StockAdjustmentController extends Controller
             'quantity' => $request->quantity,
             'is_addition' => $request->is_addition,
             'note' => $request->note,
-            'date' => $request->time(),
+            //'date' => $request->time(),
+            'date' => date("Y-m-d h:i:s", time() ),
         ]);
 
-        $stock = DB::table('product_stocks')->insert([
-            'product_id' => $request->product_id,
-            'product_stock' => $request->product_stock,
-            'warehouse_id' => $request->warehouse_id
+        $update = DB::table('product_stocks')
+        ->where('product_id',   $request->product_id)
+        ->where('warehouse_id', $request->warehouse_id)
+        ->update([
+
+        'product_id' => $request->product_id,
+        'product_stock' => $request->product_stock,
+        'warehouse_id' => $request->warehouse_id
+        
         ]);
+
+        if($update==0){
+
+            $stock = DB::table('product_stocks')->insert([
+                'product_id' => $request->product_id,
+                'product_stock' => $request->product_stock,
+                'warehouse_id' => $request->warehouse_id
+            ]);
+
+        }
+
+        
 
         return response()->json([
             "success" => true,
             "message" => "stock_adjustment Created Successfully.",
-            "data" => ($stock_adjustment && $stock)
+             "data" => ($stock_adjustment)
+            // "data" => $stock_adjustment
             ]);  
                     
     }

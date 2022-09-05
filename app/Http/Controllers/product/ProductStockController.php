@@ -19,10 +19,11 @@ class ProductStockController extends Controller
         return response()->json($arranged_stocks);
     }
 
-    public function show($id)
+    public function show($id,$wid)
    {
          $stock = DB::table('product_stocks')
                     ->where('product_id',$id)
+                    ->where('warehouse_id',$wid)
                     ->first(); 
        
          return response()->json($stock);       

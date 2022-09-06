@@ -52,6 +52,9 @@ class FileController extends Controller
     {
         
         $path = $request->filename;
+        if($path=='dummy.png'){
+            return response()->json('dymmu file can not be deleted');
+        }
         $fullpath = public_path('upload/').$path;
 
         // return json_encode($fullpath);

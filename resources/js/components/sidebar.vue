@@ -23,6 +23,15 @@ export default{
 
                 },
                 {   
+                    navlinktext:'users',
+                    navlink:'',
+                    subnavlinks:[
+                        { subnavtext:'users', subnavlink:'/dashboard/users'},
+                        { subnavtext:'roles', subnavlink:'/dashboard/roles'},  
+                    ]
+
+                },
+                {   
                     navlinktext:'settings',
                     navlink:'',
                     subnavlinks:[
@@ -32,10 +41,10 @@ export default{
                     ]
 
                 },
+
                 {   
                     navlinktext:'media',
                     navlink:'/dashboard/files',
-
                 },
 
 

@@ -1,0 +1,14 @@
+
+
+/// Roles 
+['role_id'=> 1,'role_name' => 'admin'],
+['role_id'=> 2,'role_name' => 'stockmanager'], 
+['role_id'=> 3,'role_name' => 'salesman'],
+
+
+
+// Permission
+['permission_id'=> 1,'permission_name' => 'view_product'],
+['permission_id'=> 2,'permission_name' => 'create_product'],
+['permission_id'=> 3,'permission_name' => 'update_product'],
+['permission_id'=> 4,'permission_name' => 'delete_product'],

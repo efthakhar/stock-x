@@ -17,7 +17,7 @@ export default{
                 this.files = data[0]
                 this.base_path = data[1]
 
-                console.log(this.files)
+                //console.log(this.files)
             })
         },
 

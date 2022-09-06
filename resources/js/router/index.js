@@ -12,6 +12,25 @@ const router = createRouter({
       component: () =>  import('../views/media/files.vue'),
     },
 
+    // Users 
+    {
+      path: '/dashboard/users',
+      name: 'users',
+      component: () =>  import('../views/users/users.vue'),
+    },
+    {
+      path: '/dashboard/add-user',
+      name: 'add-user',
+      component: () =>  import('../views/users/add-user.vue'),
+    },
+    {
+      path: '/dashboard/edit-user/:id',
+      name: 'edit-user',
+      component: () =>  import('../views/users/edit-user.vue'),
+    },
+
+
+
     // dashboard overview
     {
       path: '/dashboard/overview',

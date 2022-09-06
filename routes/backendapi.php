@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\auth\PermissionController;
+use App\Http\Controllers\auth\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -12,12 +14,33 @@ use App\Http\Controllers\product\StockAdjustmentController;
 use App\Http\Controllers\setting\CurrencyController;
 use App\Http\Controllers\setting\TaxController;
 use App\Http\Controllers\setting\WarehouseController;
-
-
+use App\Http\Controllers\user\UserController;
 use Illuminate\Http\Request;
 
-
 Route::prefix('api')->middleware( ['is_logged_in'] )->group(function () {
+
+
+    //////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    // User
+    Route::get('/users',[UserController::class,'index']);
+    Route::get('/users/{id}',[UserController::class,'show']);
+    Route::post('/users',[UserController::class,'store']);
+    Route::put('/users/{id}',[UserController::class,'update']);
+
+    
+
+    //Role
+    Route::get('/roles',[RoleController::class,'index']);
+
+    //Permissions
+    Route::get('/permissions',[PermissionController::class,'index']);
+
+
+
+    //////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
 
     //Warehouse
     Route::get('/warehouses',[WarehouseController::class,'index']);

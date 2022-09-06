@@ -51,6 +51,7 @@ Route::get('/dashboard/{any?}', function () {
 // File Upload 
 Route::post('/file-control',[FileController::class,'upload']);
 Route::delete('/file-control',[FileController::class,'delete']);
+Route::get('/file-control',[FileController::class,'getFiles']);
 
 // backend api routes
 include_once('backendapi.php');

@@ -5,7 +5,12 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
 
-    
+    // media
+    {
+      path: '/dashboard/files',
+      name: 'files',
+      component: () =>  import('../views/media/files.vue'),
+    },
 
     // dashboard overview
     {

@@ -32,6 +32,11 @@ export default{
                     ]
 
                 },
+                {   
+                    navlinktext:'media',
+                    navlink:'/dashboard/files',
+
+                },
 
 
 

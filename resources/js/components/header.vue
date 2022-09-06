@@ -35,13 +35,17 @@ export default{
             </g>
             <g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
             </svg>
-    </div>       
+    </div> 
+    <div class="logout-div">
+        <a href="/logout" class="btn  btn-danger">logout</a>
+    </div>      
 </div> 
 </template>
 
 <style>
 .dashboard-header{
     background-color: #fff;
+    display: flex;
 }
 .menu-icon{
     display: inline-block;
@@ -59,4 +63,5 @@ export default{
     cursor: pointer;
     fill:#196ce7;
 }
+.logout-div{ margin-left: auto;}
 </style>

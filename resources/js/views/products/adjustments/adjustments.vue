@@ -39,7 +39,10 @@
                await fetch(`${this.api_url}/api/stock-adjustments`,{
                     method:  'DELETE',
                     headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.
+                                querySelector('meta[name="csrf-token"]')
+                                .content,
                     }, 
                     body: JSON.stringify(this.ad_to_del)             
                 })

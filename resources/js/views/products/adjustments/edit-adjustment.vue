@@ -82,15 +82,7 @@ export default{
                 product_stock = product_stock  - this.quantity
             }
 
-            // this.final_stock = product_stock
-
-
-
-            // this.is_addition== 1 ? 
-            //                     (this.current_stock  - this.prev_quantity + this.quantity)
-            //                   : (this.current_stock  + this.prev_quantity - this.quantity )
-
-        
+           
             let data = { 
                 warehouse_id : this.warehouse_id,
                 product_id   : this.product_id,
@@ -105,7 +97,10 @@ export default{
         await  fetch(`${this.api_url}/api/stock-adjustments/${this.$route.params.id}`,{
                 method:  'PUT',
                 headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.
+                                querySelector('meta[name="csrf-token"]')
+                                .content,
                 },
                 body: JSON.stringify(data)
             }).then(response=>response.json())

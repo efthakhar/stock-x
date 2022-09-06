@@ -68,7 +68,10 @@ export default{
                 await  fetch(`${this.api_url}/api/products`,{
                     method:  'POST',
                     headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.
+                                querySelector('meta[name="csrf-token"]')
+                                .content,
                     },
                     body: JSON.stringify(data)
                 }).then(response=>response.json())

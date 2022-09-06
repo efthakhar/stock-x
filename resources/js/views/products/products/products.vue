@@ -31,7 +31,10 @@ export default{
             fetch(`${this.api_url}/api/products/${id}`,{
                 method:  'DELETE',
                 headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.
+                                querySelector('meta[name="csrf-token"]')
+                                .content,
                 },              
             })
             .then(response=> response.json())

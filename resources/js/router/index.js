@@ -6,6 +6,8 @@ const router = createRouter({
   routes: [
 
     
+
+    // dashboard overview
     {
       path: '/dashboard/overview',
       name: 'overview',

@@ -33,7 +33,10 @@ export default{
             await  fetch(`${this.api_url}/api/product-units/${this.$route.params.id}`,{
                 method:  'PUT',
                 headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.
+                                querySelector('meta[name="csrf-token"]')
+                                .content,
                 },
                 body: JSON.stringify(data)
             })

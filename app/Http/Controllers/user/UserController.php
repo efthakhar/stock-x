@@ -90,4 +90,16 @@ class UserController extends Controller
         return response()->json('user updated sucessfully');
 
     }
+    function delete($id)
+    {
+        $user = DB::table('users')
+                    ->where('id',$id)
+                    ->delete();
+         $role_user =  DB::table('user_role')
+                    ->where('user_id',$id)
+                    ->delete();
+        
+
+        return response()->json('user deleted');
+    }
 }

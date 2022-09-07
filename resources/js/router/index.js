@@ -30,6 +30,14 @@ const router = createRouter({
     },
 
 
+     // Roles
+     {
+      path: '/dashboard/roles-permissions',
+      name: 'roles-permissions',
+      component: () =>  import('../views/role-permission/roles-permissions.vue'),
+    },
+
+
 
     // dashboard overview
     {

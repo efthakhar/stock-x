@@ -28,6 +28,7 @@ Route::prefix('api')->middleware( ['is_logged_in'] )->group(function () {
     Route::get('/users/{id}',[UserController::class,'show']);
     Route::post('/users',[UserController::class,'store']);
     Route::put('/users/{id}',[UserController::class,'update']);
+    Route::delete('/users/{id}',[UserController::class,'delete']);
 
     
 
@@ -36,6 +37,10 @@ Route::prefix('api')->middleware( ['is_logged_in'] )->group(function () {
 
     //Permissions
     Route::get('/permissions',[PermissionController::class,'index']);
+    Route::get('/permissions/byuser/{id}',[PermissionController::class,'permissionsByUser']);
+    Route::get('/permissions/byrole/{id}',[PermissionController::class,'permissionsByrole']);
+    Route::put('/permissions/change/{role_id}',
+    [PermissionController::class,'changePermissionsByrole']);
 
 
 

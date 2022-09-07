@@ -7,11 +7,11 @@ export default{
         }
     },
     methods:{
-        async getRoles(){
-                await  fetch(`${this.api_url}/api/roles`)
-                .then(response=>response.json())
-                .then(data => this.roles = data)
-        },
+        // async getRoles(){
+        //         await  fetch(`${this.api_url}/api/roles`)
+        //         .then(response=>response.json())
+        //         .then(data => this.roles = data)
+        // },
         async getUsers(){
 
             await  fetch(`${this.api_url}/api/users`)
@@ -20,9 +20,9 @@ export default{
 
         },
 
-        async deleteWarehouse(id){
+        async deleteUser(id){
 
-            await  fetch(`${this.api_url}/api/warehouses/${id}`,{
+            await  fetch(`${this.api_url}/api/users/${id}`,{
                 method:  'DELETE',
                 headers: {
                 'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export default{
             })
             .then(response=>response.json())
             .then(data => console.log(data))
-            this.getWarehouses()
+            this.getUsers()
 
         }
     },
@@ -76,7 +76,7 @@ export default{
                             edit
                         </router-link> 
 
-                        <a class="btn btn-sm btn-danger" v-on:click="deleteWarehouse(user.id)">
+                        <a class="btn btn-sm btn-danger" v-on:click="deleteUser(user.id)">
                             delete
                         </a>
                     </td>

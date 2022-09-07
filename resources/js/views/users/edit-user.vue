@@ -71,7 +71,7 @@
 <template>
     <div class="row">
     <div class="fullpage">
-        {{role_id}}/{{this.$route.params.id}}
+
         <div class="page-content">
             <div class="col-md-6 p-2">
                 <h6 class="m-2 mb-3">EDIT USER</h6>

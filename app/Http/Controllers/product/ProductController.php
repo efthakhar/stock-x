@@ -5,20 +5,26 @@ namespace App\Http\Controllers\product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
 
     function index(){
 
-        $products = DB::table('products')->get()->toArray(); 
+        if(Gate::allows('check_permission',1)){
+            $products = DB::table('products')->get()->toArray(); 
 
-        $arranged_products = [];
-        foreach($products as $product) {
-            $arranged_products[$product->id] = $product;
-        }          
-        return response()->json($arranged_products);
+            $arranged_products = [];
+            foreach($products as $product) {
+                $arranged_products[$product->id] = $product;
+            }          
+            return response()->json($arranged_products);
+        }else{
+            return response()->json(['not allowed']);
+        }
+        
+        
     }
 
     function getProductByName($name){
@@ -38,6 +44,7 @@ class ProductController extends Controller
 
     public function show($id)
    {
+         
          $product = DB::table('products')->find($id); 
        
          return response()->json($product);       
@@ -118,6 +125,7 @@ class ProductController extends Controller
 
     public function delete($id)
     {    
+
                 $deleted = DB::table('products')
                 ->where('id', '=', $id)
                 ->delete();

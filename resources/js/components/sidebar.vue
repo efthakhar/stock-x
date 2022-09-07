@@ -27,7 +27,7 @@ export default{
                     navlink:'',
                     subnavlinks:[
                         { subnavtext:'users', subnavlink:'/dashboard/users'},
-                        { subnavtext:'roles', subnavlink:'/dashboard/roles'},  
+                        { subnavtext:'roles', subnavlink:'/dashboard/roles-permissions'},  
                     ]
 
                 },
